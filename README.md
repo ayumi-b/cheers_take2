@@ -9,7 +9,7 @@ The ruby cheers exercise (see: ayumi-b/cheers). This time, 3 weeks into learning
 ## Sepcifications
 (how does the program work?)
 
-Start the program by running './cheers.rb'
+Start the program by running `./cheers.rb`
 
 The program should ask:
 
