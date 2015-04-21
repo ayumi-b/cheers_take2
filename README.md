@@ -11,19 +11,19 @@ The ruby cheers exercise (see: ayumi-b/cheers). This time, 3 weeks into learning
 
 ### Help Usage
 
-Run the program by running `./cheers.rb`
+Run the program by running `./cheers`
 
 The program will print out:
 
 > I'd cheer for you, if only I knew who you were :(
 
 
-> Try again with `./cheers.rb [Name] [MM/DD Birthday]`
+> Try again with `./cheers [Name] [MM/DD Birthday]`
 
 
 ### Regular Usage
 
-Run the program by running `./cheers.rb Abby 08/25`
+Run the program by running `./cheers Abby 08/25`
 
 The program outputs a cheer in the following format:
 
@@ -59,7 +59,7 @@ days until the user's birthday.
 
 > I would wish you a Happy Birthday, if I knew when that was!
 
-> Try again with `./cheers.rb [Name] [MM/DD Birthday]`
+> Try again with `./cheers [Name] [MM/DD Birthday]`
 
 * If there was input that couldn't be parsed, the program would instead
   say:
@@ -72,7 +72,7 @@ days until the user's birthday.
 ## Specifications, for interactive version of Cheers
 (how does the program work?)
 
-Start the program by running `./cheers.rb`
+Start the program by running `./cheers`
 
 The program should ask:
 
