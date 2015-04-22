@@ -10,6 +10,13 @@ EOS
 end
 
 
+def message_invalid_birthday
+  puts "I would wish you a Happy Birthday, if I knew when that was!"
+end
+
+
+###starts accepting arguments
+
 exit_with_usage_instructions if ARGV.empty? || ARGV.size > 2
 
 
@@ -24,25 +31,29 @@ cheerable_name.each_char do |char|
 end
 puts "#{original_name}'s just GRAND!"
 puts ""
-puts "I would wish you a Happy Birthday, if I knew when that was!"
 
 
-def birthday_wish(bday)
-  bday = ARGV[1]
-  bday = Date.parse(bday)
+##starts dealing with birthdays
+
+def birthday_wish(num)
+  bday = Date.parse(num)
   present_date = Date.today
-  current_day = Date.parse(present_date)
-  difference = bday - current_day
-  difference % 365
-
-
-
-begin 
-
-rescue
-
+  days_away = (bday - present_date) % 365
+  days_away.to_i
 end
 
+  bday = ARGV[1]
 
 
-end
+  if bday.nil? || bday.length > 5
+    message_invalid_birthday
+  else
+    begin
+      days_away = birthday_wish(bday)
+      puts "Awesome! Your birthday's in #{days_away} days! Happy Birthday in advance!"
+    rescue
+      message_invalid_birthday
+    end
+
+  end
+

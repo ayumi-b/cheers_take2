@@ -117,13 +117,13 @@ Give me a... B
 Give me a... Y
 Abby's just GRAND!
 
-Awesome! Your birthday's in 127 days! Happy Birthday in advance!
+Awesome! Your birthday's in 125 days! Happy Birthday in advance!
 EOS
     assert_equal expected, output
   end
 
   def test_two_arguments_with_valid_name_invalid_bday_bad_format
-    output = `./cheers Abby 0825`
+    output = `./cheers Abby 9825`
     expected = <<EOS
 Give me an... A
 Give me a... B
@@ -131,7 +131,7 @@ Give me a... B
 Give me a... Y
 Abby's just GRAND!
 
-I couldn't understand that. Could you give that to me in mm/dd format next time?
+I would wish you a Happy Birthday, if I knew when that was!
 EOS
     assert_equal expected, output
   end
@@ -147,7 +147,7 @@ Give me a... B
 Give me a... Y
 Abby's just GRAND!
 
-I couldn't understand that. Could you give that to me in mm/dd format next time?
+I would wish you a Happy Birthday, if I knew when that was!
 EOS
     assert_equal expected, output
   end
@@ -162,7 +162,7 @@ Give me a... B
 Give me a... Y
 Abby's just GRAND!
 
-I couldn't understand that. Could you give that to me in mm/dd format next time?
+I would wish you a Happy Birthday, if I knew when that was!
 EOS
     assert_equal expected, output
   end
@@ -177,7 +177,7 @@ Give me a... B
 Give me a... Y
 Abby's just GRAND!
 
-I couldn't understand that. Could you give that to me in mm/dd format next time?
+I would wish you a Happy Birthday, if I knew when that was!
 EOS
     assert_equal expected, output
   end
