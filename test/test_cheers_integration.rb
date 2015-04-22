@@ -1,25 +1,27 @@
-require 'minitest/autorun'
+require_relative 'helper'
+
+
 
 class TestCheersIntegration < Minitest::Unit::TestCase
 
-  def test_help_message
+  def test_zero_arguments_prints_help_message
     output = `./cheers`
-    expected =  <<EOS
-I'd cheer for you, if I only knew who you were :(
+    expected = <<EOS
+I'd cheer for you, if only I knew who you were :(
 Try again with `./cheers [Name] [MM/DD Birthday]
 EOS
     assert_equal expected, output
   end
 
 
-  def test_one_valid_argument_valid_name_no_bday
+  def test_one_valid_argument_with_valid_name
     output = `./cheers Abby`
-    expected =  <<EOS
+    expected = <<EOS
 Give me an... A
 Give me a... B
 Give me a... B
 Give me a... Y
-Abby’s just GRAND!
+Abby's just GRAND!
 
 I would wish you a Happy Birthday, if I knew when that was!
 EOS
@@ -27,12 +29,50 @@ EOS
   end
 
 
+  def test_one_valid_argument_with_hyphenated_name
+    output = `./cheers Mary-Jane`
+    expected = <<EOS
+Give me an... M
+Give me an... A
+Give me an... R
+Give me a... Y
+Give me a... J
+Give me an... A
+Give me an... N
+Give me an... E
+Mary-Jane's just GRAND!
+
+I would wish you a Happy Birthday, if I knew when that was!
+EOS
+    assert_equal expected, output
+  end
+
+
+  def test_one_valid_argument_with_spaced_name
+    output = `./cheers "Mary Jane"`
+    expected = <<EOS
+Give me an... M
+Give me an... A
+Give me an... R
+Give me a... Y
+Give me a... J
+Give me an... A
+Give me an... N
+Give me an... E
+Mary Jane's just GRAND!
+
+I would wish you a Happy Birthday, if I knew when that was!
+EOS
+    assert_equal expected, output
+  end
+
+
+
   def test_one_valid_argument_no_name_valid_bday
     output = `./cheers 08/25`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
-
-Try again with ./cheers [Name] [MM/DD Birthday]
+Try again with `./cheers [Name] [MM/DD Birthday]
 EOS
     assert_equal expected, output
   end
@@ -42,18 +82,16 @@ EOS
     output = `./cheers 1234`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
-
-Try again with ./cheers [Name] [MM/DD Birthday]
+Try again with `./cheers [Name] [MM/DD Birthday]
 EOS
     assert_equal expected, output
   end
 
   def test_one_invalid_argument_invalid_name_spaces_no_bday
-    output = `./cheers 1234`
+    output = `./cheers " "`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
-
-Try again with ./cheers [Name] [MM/DD Birthday]
+Try again with `./cheers [Name] [MM/DD Birthday]
 EOS
     assert_equal expected, output
   end
@@ -64,8 +102,7 @@ EOS
     output = `./cheers 99/99`
     expected =<<EOS
 I'd cheer for you, if only I knew who you were :(
-
-Try again with ./cheers [Name] [MM/DD Birthday]
+Try again with `./cheers [Name] [MM/DD Birthday]
 EOS
     assert_equal expected, output
   end
@@ -78,7 +115,7 @@ Give me an... A
 Give me a... B
 Give me a... B
 Give me a... Y
-Abby’s just GRAND!
+Abby's just GRAND!
 
 Awesome! Your birthday's in 127 days! Happy Birthday in advance!
 EOS
@@ -92,7 +129,7 @@ Give me an... A
 Give me a... B
 Give me a... B
 Give me a... Y
-Abby’s just GRAND!
+Abby's just GRAND!
 
 I couldn't understand that. Could you give that to me in mm/dd format next time?
 EOS
@@ -108,7 +145,7 @@ Give me an... A
 Give me a... B
 Give me a... B
 Give me a... Y
-Abby’s just GRAND!
+Abby's just GRAND!
 
 I couldn't understand that. Could you give that to me in mm/dd format next time?
 EOS
@@ -123,7 +160,7 @@ Give me an... A
 Give me a... B
 Give me a... B
 Give me a... Y
-Abby’s just GRAND!
+Abby's just GRAND!
 
 I couldn't understand that. Could you give that to me in mm/dd format next time?
 EOS
@@ -138,7 +175,7 @@ Give me an... A
 Give me a... B
 Give me a... B
 Give me a... Y
-Abby’s just GRAND!
+Abby's just GRAND!
 
 I couldn't understand that. Could you give that to me in mm/dd format next time?
 EOS
@@ -151,8 +188,7 @@ EOS
     output = `./cheers 1234 08/25`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
-
-Try again with ./cheers [Name] [MM/DD Birthday]
+Try again with `./cheers [Name] [MM/DD Birthday]
 EOS
     assert_equal expected, output
   end
@@ -162,11 +198,11 @@ EOS
     output = `./cheers 1234 25/25`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
-
-Try again with ./cheers [Name] [MM/DD Birthday]
+Try again with `./cheers [Name] [MM/DD Birthday]
 EOS
     assert_equal expected, output
   end
+
 
 
 
