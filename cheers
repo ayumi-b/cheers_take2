@@ -1,7 +1,48 @@
 #!/usr/bin/env ruby
+require 'date'
 
-puts <<EOS
-I'd cheer for you, if I only knew who you were :(
+def exit_with_usage_instructions
+  puts <<EOS
+I'd cheer for you, if only I knew who you were :(
 Try again with `./cheers [Name] [MM/DD Birthday]
 EOS
+  exit
+end
 
+
+exit_with_usage_instructions if ARGV.empty? || ARGV.size > 2
+
+
+original_name = ARGV[0]
+cheerable_name = original_name.upcase.gsub(/[^A-Z]/, "")
+
+exit_with_usage_instructions if cheerable_name.empty?
+
+cheerable_name.each_char do |char|
+  article = "n" if "AEFHILMNORSX".include? char
+  puts "Give me a#{article}... #{char}"
+end
+puts "#{original_name}'s just GRAND!"
+puts ""
+puts "I would wish you a Happy Birthday, if I knew when that was!"
+
+
+def birthday_wish(bday)
+  bday = ARGV[1]
+  bday = Date.parse(bday)
+  present_date = Date.today
+  current_day = Date.parse(present_date)
+  difference = bday - current_day
+  difference % 365
+
+
+
+begin 
+
+rescue
+
+end
+
+
+
+end
